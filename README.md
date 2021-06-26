@@ -29,7 +29,11 @@ V.   [Modules               ](#v-modules)
 
 VI.  [Project Reproduction  ](#vi-project-reproduction)
 
+<br>
+
 ![](https://github.com/ray-zapata/project_clustering_zillow/blob/main/assets/divider.png)
+
+<br>
 
 ### I. Project Overview
 ---
