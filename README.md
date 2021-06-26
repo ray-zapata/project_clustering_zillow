@@ -1,5 +1,5 @@
 # Finding Drivers of Zestimate Errors
-![](https://github.com/ray-zapata/project_clustering_zillow/blob/main/assets/logo.png)
+![](https://github.com/ray-zapata/project_clustering_zillow/blob/main/assets/logo.jpg)
 
 ### Table of Contents
 ---
@@ -108,48 +108,48 @@ Following acquisition and preparation of the initial SQL database, the DataFrame
     - Initial thoughts and hypotheses
     - Project summary
     - Instructions to reproduce
-- [ ] 
+- [x] Plan stages of project and consider needs versus desires
 
 #### 2. Data Acquisition
 ✓ _Plan_ ➜ 🟢 **Acquire** ➜ ☐ _Prepare_ ➜ ☐ _Explore_ ➜ ☐ _Model_ ➜ ☐ _Deliver_
 
-- [ ] Obtain initial data and understand its structure
+- [x] Obtain initial data and understand its structure
     - Obtain data from Codeup database with appropriate SQL query
-- [ ] Remedy any inconsistencies, duplicates, or structural problems within data
-- [ ] Perform data summation
+- [x] Remedy any inconsistencies, duplicates, or structural problems within data
+- [x] Perform data summation
 
 #### 3. Data Preparation
 ✓ _Plan_ ➜ ✓ _Acquire_ ➜ 🟢 **Prepare** ➜ ☐ _Explore_ ➜ ☐ _Model_ ➜ ☐ _Deliver_
 
-- [ ] Address missing or inappropriate values, including outliers
-- [ ] Plot distributions of variables
-- [ ] Encode categorical variables
-- [ ] Consider and create new features as needed
-- [ ] Split data into `train`, `validate`, and `test`
+- [x] Address missing or inappropriate values, including outliers
+- [x] Plot distributions of variables
+- [x] Encode categorical variables
+- [x] Consider and create new features as needed
+- [x] Split data into `train`, `validate`, and `test`
 
 #### 4. Data Exploration
 ✓ _Plan_ ➜ ✓ _Acquire_ ➜ ✓ _Prepare_ ➜ 🟢 **Explore** ➜ ☐ _Model_ ➜ ☐ _Deliver_
 
-- [ ] Visualize relationships of variables
-- [ ] Formulate hypotheses
-- [ ] Use clustering methodology in exploration of data
+- [x] Visualize relationships of variables
+- [x] Formulate hypotheses
+- [x] Use clustering methodology in exploration of data
     - Perform statistical testing and visualization
     - Use at least 3 combinations of features
     - Document takeaways of each clustering venture
     - Create new features with clusters if applicable
-- [ ] Perform statistical tests
-- [ ] Decide upon features and models to be used
+- [x] Perform statistical tests
+- [x] Decide upon features and models to be used
 
 #### 5. Modeling & Evaluation
 ✓ _Plan_ ➜ ✓ _Acquire_ ➜ ✓ _Prepare_ ➜ ✓ _Explore_ ➜ 🟢 **Model** ➜ ☐ _Deliver_
 
-- [ ] Establish baseline prediction
-- [ ] Create, fit, and predict with models
+- [x] Establish baseline prediction
+- [x] Create, fit, and predict with models
     - Create at least four different models
     - Use different configurations of algorithms, hyper parameters, and/or features
-- [ ] Evaluate models with out-of-sample data
-- [ ] Utilize best performing model on `test` data
-- [ ] Summarize, visualize, and interpret findings
+- [x] Evaluate models with out-of-sample data
+- [x] Utilize best performing model on `test` data
+- [x] Summarize, visualize, and interpret findings
 
 #### 6. Product Delivery
 ✓ _Plan_ ➜ ✓ _Acquire_ ➜ ✓ _Prepare_ ➜ ✓ _Explore_ ➜ ✓ _Model_ ➜ 🟢 **Deliver**
@@ -157,7 +157,7 @@ Following acquisition and preparation of the initial SQL database, the DataFrame
     - Python code clearly commented when necessary
     - Sufficiently utilize markdown
     - Appropriately title notebook and sections
-- [ ] With additional time, continue with exploration beyond MVP
+- [x] With additional time, continue with exploration beyond MVP
 - [ ] Proof read and complete README and project repository
 
 ### V. Modules
@@ -168,6 +168,7 @@ The created modules used in this project below contain full comments an docstrin
 - [`acquire`](https://raw.githubusercontent.com/ray-zapata/project_clustering_zillow/main/acquire.py): contains functions used in initial data acquisition leading into the prepare phase
 - [`prepare`](https://raw.githubusercontent.com/ray-zapata/project_clustering_zillow/main/prepare.py): contains functions used to prepare data for exploration and visualization
 - [`explore`](https://raw.githubusercontent.com/ray-zapata/project_clustering_zillow/main/explore.py): contains functions to visualize the prepared data and estimate the best drivers of property value
+- [`wrangle`  ](https://raw.githubusercontent.com/ray-zapata/project_clustering_zillow/main/wrangle.py  ): contains functions to prepare data in the manner needed for specific Zillow needs
 - [`model`  ](https://raw.githubusercontent.com/ray-zapata/project_clustering_zillow/main/model.py  ): contains functions to create, test models and visualize their performance
 
 ### VI. Project Reproduction
