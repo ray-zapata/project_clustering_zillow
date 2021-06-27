@@ -75,31 +75,37 @@ The Codeup `zillow` SQL database contains twelve tables, nine of which have fore
 
 Following acquisition and preparation of the initial SQL database, the DataFrames used in this project contain the following variables. Contained values are defined along with their respective data types.
 
-| Variable              | Definition                                         | Data Type  |
-|:----------------------|:--------------------------------------------------:|:----------:|
-| acreage               | conversion of lot_square_feet into acres           | float64    |
-| age                   | age of propery as of 2017                          | int64      |
-| bathrooms             | count of full- and half-bathrooms                  | float64    |
-| bedrooms              | count of bedrooms                                  | int64      |
-| bedrooms_per_sqft     | ratio of bedrooms to structure_square_feet         | float64    |
-| county                | human readable county names                        | object     |
-| full_bathrooms        | count of only full-bathrooms                       | int64      |
-| land_value_usd        | value of land in U.S. dollars                      | float64    |
-| latitude              | latitude geographic coordinate of property         | float64    |
-| log_error *           | difference of log(Zestimate) and log(SalePrice)    | float64    |
-| longitude             | longitude geographic coordinate of property        | float64    |
-| lot_square_feet       | size of lot(land) in square feet                   | float64    |
-| parcel_id             | unique identier of property                        | int64      |
-| property_id           | unique identier of property                        | int64      |
-| property_value_usd    | value of property in entirety in U.S. dollars      | float64    |
-| room_count            | count of bedrooms and full- and half-bathrooms     | float64    |
-| structure_square_feet | dimensions of structure on property in square feet | float64    |
-| structure_value_usd   | value of structure on propert in U.S. dollars      | float64    |
-| tax_amount_usd        | most recent tax payment from property owner        | float64    |
-| transaction_date      | most recent date of property sale                  | datetime64 |
-| year_built            | year structure was originally built                | int64      |
+| Variable               | Definition                                         | Data Type  |
+|:----------------------:|:--------------------------------------------------:|:----------:|
+| acreage                | conversion of lot_square_feet into acres           | float64    |
+| age                    | age of propery as of 2017                          | int64      |
+| bathrooms              | count of full- and half-bathrooms                  | float64    |
+| bed_sqft_age_clstr_#   | boolean for five clusterings of bed_sqft_age       | int64      |
+| bedrooms               | count of bedrooms                                  | int64      |
+| bedrooms_per_sqft      | ratio of bedrooms to structure_square_feet         | float64    |
+| census_tractcode       | US census tract codes for property location        | float64    |
+| full_bathrooms         | count of only full-bathrooms                       | int64      |
+| la_county              | boolean for if county is within Los Angeles County | int64      |
+| land_value_usd         | value of land in U.S. dollars                      | float64    |
+| lat_long_clstr_#       | boolean for five clusterings of lat_long           | int64      |
+| latitude               | latitude geographic coordinate of property         | float64    |
+| log_error *            | difference of log(Zestimate) and log(SalePrice)    | float64    |
+| longitude              | longitude geographic coordinate of property        | float64    |
+| lot_rooms_clstr_#      | boolean for five clusterings of lot_rooms          | int64      |
+| lot_square_feet        | size of lot(land) in square feet                   | float64    |
+| orange_county          | boolean for if county is within Orange County      | int64      |
+| parcel_id              | unique identier of property                        | int64      |
+| property_id            | unique identier of property                        | int64      |
+| property_value_usd     | value of property in entirety in U.S. dollars      | float64    |
+| room_count             | count of bedrooms and full- and half-bathrooms     | float64    |
+| structure_square_feet  | dimensions of structure on property in square feet | float64    |
+| structure_value_usd    | value of structure on propert in U.S. dollars      | float64    |
+| tax_amount_usd         | most recent tax payment from property owner        | float64    |
+| tract_size_age_clstr_# | boolean for five clusterings of tract_size_age     | int64      |
+| transaction_date       | most recent date of property sale                  | datetime64 |
+| year_built             | year structure was originally built                | int64      |
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  * Target variable
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  * Target variable
 
 ### IV. Process
 ---

@@ -75,16 +75,12 @@ def drop_zillow_nulls(df):
                           'roomcnt'])
     # drop columns and rows missing more than 25% of total observations
     df = prepare.drop_null_values(df)
-    # set masks to filter missing tax values and payment fields
-    total_tax_not_null = df.taxvaluedollarcnt.isnull() == False
-    land_tax_not_null = df.landtaxvaluedollarcnt.isnull() == False
-    strctr_tax_not_null = df.structuretaxvaluedollarcnt.isnull() == False
-    tax_payment_not_null = df.taxamount.isnull() == False
     # drop all rows with null values for any tax fields
-    df = df[total_tax_not_null & land_tax_not_null & strctr_tax_not_null & \
-            tax_payment_not_null]
-    # drop the few rows for calculatedfinishedsquarefeet, fullbathcnt,
-    # and yearbuilt nulls rather than impute
+    df = df[df.taxvaluedollarcnt.isnull() == False]
+    df = df[df.landtaxvaluedollarcnt.isnull() == False]
+    df = df[df.structuretaxvaluedollarcnt.isnull() == False]
+    df = df[df.taxamount.isnull() == False]
+    # drop the low-count of null rows rather than impute
     df = df[df.fullbathcnt.isnull() == False]
     df = df[df.yearbuilt.isnull() == False]
     df = df[df.calculatedfinishedsquarefeet.isnull() == False]
@@ -188,6 +184,9 @@ def add_clusters(train, validate, test):
     '''
     '''
 
+    # create lat_long_clstr
+    train, validate, test = explore.create_clusters(train, validate, test,
+                        ['latitude', 'longitude'], 'lat_long', k=5)
     # create lot_rooms_clstr
     train, validate, test = explore.create_clusters(train, validate, test,
                         ['acreage', 'room_count'], 'lot_rooms', k=5)
@@ -197,9 +196,43 @@ def add_clusters(train, validate, test):
     # create bed_sqft_age_clstr
     train, validate, test = explore.create_clusters(train, validate, test,
                         ['census_tractcode', 'structure_square_feet', 'age'],
-                        'bed_sqft_age', k=5)
+                        'tract_size_age', k=5)
 
     return train, validate, test
+
+
+def prep_zillow(query=query, clusters=True):
+    '''
+    '''
+
+    # read in initial DataFrame
+    df = acquire.get_sql(query, 'zillow')
+    # store count of inital observations
+    init_observ = df.shape[0]
+    # remove duplicate properties keeping most recent sell date
+    df = df.sort_values('transactiondate')\
+           .drop_duplicates('parcelid', keep='last')
+    # filter out properties not likely single unit
+    df = get_single_units(df)
+    # drop null values that not going to be imputed
+    df = drop_zillow_nulls(df)
+    # fix data types and structure issues
+    df = fix_zillow_structure(df)
+    # rename columns
+    df = rename_zillow_cols(df)
+    # remove outliers for certain columns using IQR
+    df = shed_zillow_outliers(df)
+    # reorganize columns alphabetically for readability
+    cols = list(df)
+    cols.sort()
+    df = df[cols]
+    # split data into train, validate, test
+    train, validate, test = prepare.split_data(df)
+    # impute missing values from lot_square_feet column
+    train, validate, test = prepare.impute_null_values(train, validate, test,
+                                    col_list=['lot_square_feet'])
+
+    return train
 
 
 def wrangle_zillow(query=query, clusters=True):
