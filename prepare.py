@@ -17,6 +17,11 @@ from sklearn.impute import SimpleImputer
 
 def drop_cols_null(df, max_missing_rows_pct=0.25):
     '''
+
+    Takes in a DataFrame and a maximum percent for missing values and
+    returns the passed DataFrame after removing any colums missing the
+    defined max percent or more worth of rows
+
     '''
     
     # set threshold for axis=1 and drop cols
@@ -28,6 +33,11 @@ def drop_cols_null(df, max_missing_rows_pct=0.25):
 
 def drop_rows_null(df, max_missing_cols_pct=0.25):
     '''
+
+    Takes in a DataFrame and a maximum percent for missing values and
+    returns the passed DataFrame after removing any rows missing the
+    defined max percent or more worth of columns
+
     '''
     
     # set threshold for axis=0 and drop rows
@@ -39,6 +49,14 @@ def drop_rows_null(df, max_missing_cols_pct=0.25):
 
 def drop_null_values(df, max_missing_rows_pct=0.25, max_missing_cols_pct=0.25):
     '''
+
+    Takes in a DataFrame and maximum percents for missing values in
+    columns and rows and returns the passed DataFrame after first
+    removing any columns missing the defined max percent or more worth
+    of rows then removing rows missing the defined max percent or more
+    worth of columns
+
+
     '''
     
     # drop columns with null values for passed percent of rows
@@ -119,6 +137,10 @@ def shed_zscore_outliers(df, z=3, col_list=None):
 
 def split_data(df):
     '''
+
+    Takes in a DataFrame and splits it into 60%/20%/20% for train,
+    validate, and test DataFrames using random_rate=19
+
     '''
 
     # split data into train, validate, and test datasets
@@ -132,6 +154,10 @@ def split_data(df):
 
 def split_xy(train, validate, test, target):
     '''
+
+    Takes in the three train, validate, and test DataFrames and returns
+    six X, y DataFrames after splitting the target from the X data
+
     '''
 
     # split train into X, y
@@ -149,14 +175,23 @@ def split_xy(train, validate, test, target):
 
 def impute_null_values(train, validate, test, strategy='mean', col_list=None):
     '''
+
+    Takes in the train, validate, and test DataFrame and imputes either
+    all columns the passed column list with the strategy defined in 
+    arguments
+
+    strategy='mean' default behavior
+
     '''
 
+    # if no list is passed, impute all values
     if col_list != None:
         for col in col_list:
             imputer = SimpleImputer(strategy=strategy)
             train[[col]] = imputer.fit_transform(train[[col]])
             validate[[col]] = imputer.transform(validate[[col]])
             test[[col]] = imputer.transform(test[[col]])
+    # if col_list is passed, impute only values within
     else:
         for col in list(train):
             imputer = SimpleImputer(strategy=strategy)

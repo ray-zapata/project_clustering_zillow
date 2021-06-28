@@ -52,17 +52,26 @@ def get_sql(query, db_name, use_csv=True):
 
 def cols_with_null_rows(df):
     '''
+
+    Takes in a DataFrame and returns a DataFrame that contains summary
+    statistics for the count and percent of rows that are missing from
+    each column in the DataFrame passed in
+
     '''
 
+    # sort columns into alphabetical order
     cols = list(df)
     cols.sort()
+    # create empty DataFrame to store results
     missing_df = pd.DataFrame()
+    # start loop to calculate missing values from each column
     for col in cols:
         rows_missing = df[col].isnull().sum()
         total_rows = df[col].shape[0]
         missing_row_dict = {'':col, 'num_rows_missing':f'{rows_missing:.0f}',
                     'pct_rows_missing':f'{(rows_missing / total_rows):.2%}'}
         missing_df = missing_df.append(missing_row_dict, ignore_index=True)
+    # assign columns to index to improve legibility
     missing_df = missing_df.set_index('')
 
     return missing_df
@@ -70,11 +79,20 @@ def cols_with_null_rows(df):
 
 def rows_with_null_cols(df):
     '''
+
+    Takes in a DataFrame and returns a DataFrame that contains summary
+    statistics for the count and percent of null values in any column
+    within that row
+
     '''
-    
+
+    # define number of cols missing from each row
     num_cols_missing = df.isnull().sum(axis=1)
+    # get total number of cols
     total_cols = df.shape[1]
+    # get percent of missing cols for each row
     pct_cols_missing = (num_cols_missing / total_cols)
+    # create DataFrame from dictionary of missing values
     missing_df = pd.DataFrame({'num_cols_missing':num_cols_missing,
                     'pct_cols_missing':pct_cols_missing}).reset_index()\
                     .groupby(['num_cols_missing', 'pct_cols_missing']).count()\
@@ -92,6 +110,7 @@ def summarize(df):
     
     '''
     
+    # print DataFrame .head(), .info(), and .describe()
     print('\n--~--~--~--~--~--~--~--~--~--~--~--~--~--~--~--~--~--~--~--~--\n')
     print('*** First Three Observations of DataFrame\n')
     print(df.head(3).T)
@@ -103,8 +122,10 @@ def summarize(df):
     print (df.describe().T)
     print('\n--~--~--~--~--~--~--~--~--~--~--~--~--~--~--~--~--~--~--~--~--\n')
     print('*** Value Counts for DataFrame Columns\n')
+    # create lists of obeject and non object cols
     cat_cols = [col for col in list(df) if df[col].dtype == 'O']
     num_cols = [col for col in list(df) if df[col].dtype != 'O']
+    # start loop to get .value_counts() for each column  in DataFrame
     for col in list(df):
         if col in cat_cols:
             print(f'+ {df[col].name}\n\n{df[col].value_counts()}\n')

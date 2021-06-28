@@ -44,6 +44,12 @@ query = '''
 
 def get_single_units(df):
     '''
+
+    Filters acquired Zillow data to drop all observations that don't
+    fall into defined parameters for single-unit properties
+
+    Used in wrangle_zillow function
+
     '''
 
     # create list of single unit propertylandusedesc
@@ -60,6 +66,13 @@ def get_single_units(df):
 
 def drop_zillow_nulls(df):
     '''
+
+    Filters acquired Zillow data to drop all columns that contain
+    redunant or unclear values and then all observations with null
+    values for the specified columns within
+
+    Used in wrangle_zillow function
+
     '''
 
     # set drop unnecessary id columns
@@ -91,6 +104,13 @@ def drop_zillow_nulls(df):
 
 def fix_zillow_structure(df):
     '''
+
+    Changes the values and renames the fips column to hold string names
+    for each county within, changes column data types to appropriate
+    type for values contain
+
+    Used in wrangle_zillow function
+
     '''
 
     # convert to drop float decimals
@@ -114,6 +134,12 @@ def fix_zillow_structure(df):
 
 def rename_zillow_cols(df):
     '''
+
+    Renames the columns from the initial data acauisiton to improve
+    clarity and lay access to the values within the columns
+
+    Used in wrangle_zillow function
+
     '''
 
     # rename columns
@@ -139,6 +165,12 @@ def rename_zillow_cols(df):
 
 def shed_zillow_outliers(df):
     '''
+
+    Removes IQR outliers from the specified continuous value columns
+    in Zillow DataFrame
+
+    Used in wrangle_zillow function
+    
     '''
 
     # assign columns to remove IQR outliers from
@@ -152,6 +184,12 @@ def shed_zillow_outliers(df):
 
 def encode_variables(df):
     '''
+
+    Takes the county column with human readable names and creates
+    encoded boolean column for each of the three counties
+
+    Used in wrangle_zillow function
+    
     '''
 
     # encode county variable to seperate columns
@@ -168,6 +206,12 @@ def encode_variables(df):
 
 def add_new_features(df):
     '''
+
+    Takes existing variables in the Zillow data and creates new
+    features by combining or performing calculations to transform them
+
+    Used in wrangle_zillow function
+
     '''
 
     # add new features created from other variables
@@ -182,6 +226,13 @@ def add_new_features(df):
 
 def add_clusters(train, validate, test):
     '''
+
+    Adds cluster groups found to have statistica significance in
+    exploration and creates encoded variables for each group, dropping
+    the first
+
+    Used in wrangle_zillow function
+
     '''
 
     # create lat_long_clstr
@@ -201,8 +252,12 @@ def add_clusters(train, validate, test):
     return train, validate, test
 
 
-def prep_zillow(query=query, clusters=True):
+def prep_zillow(query=query):
     '''
+
+    Obtains partially prepared data for specific needs in final report
+    notebook without causing issues with cell exceution
+
     '''
 
     # read in initial DataFrame
@@ -232,6 +287,11 @@ def prep_zillow(query=query, clusters=True):
 
 def wrangle_zillow(query=query, clusters=True):
     '''
+
+    Makes use of all other functions in the wrangle.py module and
+    outputs a fully prepared DataFrame ready for scaling and modeling,
+    then prints out brief data summary on values within and lost
+
     '''
 
     # read in initial DataFrame

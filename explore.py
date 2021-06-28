@@ -23,11 +23,18 @@ from sklearn.preprocessing import StandardScaler
 
 def elbow_plot(df, col_list):
     '''
+
+    Takes in a DataFrame and column list to use below method to find
+    changes in inertia for increasing k in cluster creation methodology
+
     '''
 
+    # set figure parameters
     plt.figure(figsize=(30, 15))
+    # create series and apply increasing k values to test for inertia
     pd.Series({k: KMeans(k).fit(df[col_list])\
                             .inertia_ for k in range(2, 15)}).plot(marker='*')
+    # define plot labels and visual components
     plt.xticks(range(2, 15))
     plt.xlabel('$k$')
     plt.ylabel('Inertia')
@@ -38,6 +45,11 @@ def elbow_plot(df, col_list):
 
 def explore_clusters(df, col_list, k=2):
     '''
+
+    Takes in a DataFrame, column list, and optional integer value for
+    k to create clusters for the purpose of exploration, returns a
+    DataFrame containing cluster group numbers and cluster centers
+
     '''
 
     # create kmeans object
@@ -253,6 +265,11 @@ def corr_test(data, x, y, alpha=0.05, r_type='pearson'):
 
 def plot_clusters(cluster_df, center_df, x_var, y_var):
     '''
+
+    Takes in cluster and centers DataFrame created by explore_clusters
+    function and plots the passed x and y variables that make up that
+    cluster group with different colors
+
     '''
 
     # define cluster_ column for better seaborn interpretation
@@ -274,6 +291,12 @@ def plot_clusters(cluster_df, center_df, x_var, y_var):
 
 def plot_three_d_clusters(cluster_df, center_df, x_var, y_var, z_var):
     '''
+
+    Takes in cluster and centers DataFrame created by explore_clusters
+    function and creates a three dimesnional plot of the passed x, y,
+    and z variables that make up that cluster group with different
+    colors
+
     '''
 
     # set figure and axes
@@ -375,6 +398,13 @@ def plot_three_d_clusters(cluster_df, center_df, x_var, y_var, z_var):
 
 def create_clusters(train, validate, test, col_list, cluster_name, k=2):
     '''
+
+    Takes in the train, validate, and test DataFrames to create k
+    clusters of passed list variables, fits the kmeans object to the
+    training data, and transforms all three DataFrames before returning
+
+    Requires passed cluster_name as a string to name created columns
+    
     '''
 
     # scale data for distance in kmeans
