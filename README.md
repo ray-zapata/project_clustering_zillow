@@ -94,9 +94,9 @@ Following acquisition and preparation of the initial SQL database, the DataFrame
 | la_county              | boolean for if county is within Los Angeles County | int64      |
 | land_value_usd         | value of land in U.S. dollars                      | float64    |
 | lat_long_clstr_#       | boolean for five clusters of lat_long              | int64      |
-| latitude               | latitude geographic coordinate of property         | float64    |
+| latitude               | latitudinal geographic coordinate of property      | float64    |
 | log_error *            | difference of log(Zestimate) and log(SalePrice)    | float64    |
-| longitude              | longitude geographic coordinate of property        | float64    |
+| longitude              | longitudinal geographic coordinate of property     | float64    |
 | lot_rooms_clstr_#      | boolean for five clusters of lot_rooms             | int64      |
 | lot_square_feet        | size of lot(land) in square feet                   | float64    |
 | orange_county          | boolean for if county is within Orange County      | int64      |
