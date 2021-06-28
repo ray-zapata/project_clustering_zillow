@@ -179,7 +179,7 @@ Following acquisition and preparation of the initial SQL database, the DataFrame
 ### V. Modules
 ---
 
-The created modules used in this project below contain full comments an docstrings to better understand their operation. Where applicable, all functions used `random_state=19` at all times. Use of functions requires access credentials to the Codeup database require an additional module named `env.py`. See project reproduction for more detail.
+The created modules used in this project below contain full comments an docstrings to better understand their operation. Where applicable, all functions used `random_state=19` at all times. Use of functions requires access credentials to the Codeup database and an additional module named `env.py`. See project reproduction for more detail.
 
 - [`acquire`](https://raw.githubusercontent.com/ray-zapata/project_clustering_zillow/main/acquire.py): contains functions used in initial data acquisition leading into the prepare phase
 - [`prepare`](https://raw.githubusercontent.com/ray-zapata/project_clustering_zillow/main/prepare.py): contains functions used to prepare data for exploration and visualization
