@@ -226,13 +226,8 @@ def prep_zillow(query=query, clusters=True):
     cols = list(df)
     cols.sort()
     df = df[cols]
-    # split data into train, validate, test
-    train, validate, test = prepare.split_data(df)
-    # impute missing values from lot_square_feet column
-    train, validate, test = prepare.impute_null_values(train, validate, test,
-                                    col_list=['lot_square_feet'])
 
-    return train
+    return df
 
 
 def wrangle_zillow(query=query, clusters=True):

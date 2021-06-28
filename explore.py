@@ -324,34 +324,41 @@ def plot_three_d_clusters(cluster_df, center_df, x_var, y_var, z_var):
         
     # plot clusters and their centers for each cluster passed in arguments
     # plot cluster 0 with center
-    ax.scatter(x0, y0, z0, s=100, c='c', edgecolor='k', marker='o')
+    ax.scatter(x0, y0, z0, s=100, c='c', edgecolor='k', marker='o',
+                                                    label='Cluster 0')
     ax.scatter(zero_center[x_var], zero_center[y_var], zero_center[z_var],
-                s=300, c='c', marker='$\\bar{x}$', label='Cluster 0 Center')
+                                    s=300, c='c', marker='$\\bar{x}$')
     # plot cluster 1 with center
-    ax.scatter(x1, y1, z1, s=100, c='y', edgecolor='k', marker='o')
+    ax.scatter(x1, y1, z1, s=100, c='y', edgecolor='k', marker='o',
+                                                    label='Cluster 1')
     ax.scatter(one_center[x_var], one_center[y_var], one_center[z_var],
-                s=300, c='y', marker='$\\bar{x}$', label='Cluster 1 Center')
+                                    s=300, c='y', marker='$\\bar{x}$')
     # plot each additional cluster passed in arguments
     if len(center_df) > 2:
-        ax.scatter(x2, y2, z2, s=100, c='m', edgecolor='k', marker='o')
+        ax.scatter(x2, y2, z2, s=100, c='m', edgecolor='k', marker='o',
+                                                    label='Cluster 2')
         ax.scatter(two_center[x_var], two_center[y_var], two_center[z_var],
-                s=300, c='m', marker='$\\bar{x}$', label='Cluster 2 Center')
+                                    s=300, c='m', marker='$\\bar{x}$')
     if len(center_df) > 3:
-        ax.scatter(x3, y3, z3, s=100, c='k', edgecolor='w', marker='o')
+        ax.scatter(x3, y3, z3, s=100, c='k', edgecolor='w', marker='o',
+                                                    label='Cluster 3')
         ax.scatter(three_center[x_var],three_center[y_var],three_center[z_var],
-                s=300, c='k', marker='$\\bar{x}$', label='Cluster 3 Center')
+                                    s=300, c='k', marker='$\\bar{x}$')
     if len(center_df) > 4:
-        ax.scatter(x4, y4, z4, s=100, c='r', edgecolor='k', marker='o')
+        ax.scatter(x4, y4, z4, s=100, c='r', edgecolor='k', marker='o',
+                                                    label='Cluster 4')
         ax.scatter(four_center[x_var], four_center[y_var], four_center[z_var],
-                s=300, c='r', marker='$\\bar{x}$', label='Cluster 4 Center')
+                                    s=300, c='r', marker='$\\bar{x}$')
     if len(center_df) > 5:
-        ax.scatter(x5, y5, z5, s=100, c='g', edgecolor='k', marker='o')
+        ax.scatter(x5, y5, z5, s=100, c='g', edgecolor='k', marker='o',
+                                                    label='Cluster 5')
         ax.scatter(five_center[x_var], five_center[y_var], five_center[z_var],
-                s=300, c='g', marker='$\\bar{x}$', label='Cluster 5 Center')
+                                    s=300, c='g', marker='$\\bar{x}$')
     if len(center_df) > 6:
-        ax.scatter(x6, y6, z6, s=100, c='b', edgecolor='k', marker='o')
+        ax.scatter(x6, y6, z6, s=100, c='b', edgecolor='k', marker='o',
+                                                    label='Cluster 6')
         ax.scatter(six_center[x_var], six_center[y_var], six_center[z_var],
-                s=300, c='b', marker='$\\bar{x}$', label='Cluster 6 Center')
+                                    s=300, c='b', marker='$\\bar{x}$')
         
     # set labels, title, and legend
     ax.set_xlabel(f'\n$x =$ {x_var}', fontsize=15)
