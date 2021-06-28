@@ -40,7 +40,7 @@ VI.  [Project Reproduction         ](#vi-project-reproduction)
 
 #### 1. Description
 
-This project serves to use clustering and linear regression methodologies to find drivers for `log_error` in *single-unit properties* sold in 2017 on Zillow.
+This project serves to use clustering and linear regression methodologies to find drivers for `log_error` in *single-unit properties* sold in 2017 in the `zillow` database.
 
 #### 2. Deliverables
 
@@ -179,12 +179,12 @@ Following acquisition and preparation of the initial SQL database, the DataFrame
 ### V. Modules
 ---
 
-The created modules used in this project below contain full comments an docstrings to better understand their operation. Where applicable, all functions used `random_state=19` at all times. Use of functions requiring access to the Codeup database require an additional module named `env.py`. See project reproduction for more detail.
+The created modules used in this project below contain full comments an docstrings to better understand their operation. Where applicable, all functions used `random_state=19` at all times. Use of functions requires access credentials to the Codeup database require an additional module named `env.py`. See project reproduction for more detail.
 
 - [`acquire`](https://raw.githubusercontent.com/ray-zapata/project_clustering_zillow/main/acquire.py): contains functions used in initial data acquisition leading into the prepare phase
 - [`prepare`](https://raw.githubusercontent.com/ray-zapata/project_clustering_zillow/main/prepare.py): contains functions used to prepare data for exploration and visualization
 - [`explore`](https://raw.githubusercontent.com/ray-zapata/project_clustering_zillow/main/explore.py): contains functions to visualize the prepared data and estimate the best drivers of property value
-- [`wrangle`](https://raw.githubusercontent.com/ray-zapata/project_clustering_zillow/main/wrangle.py): contains functions to prepare data in the manner needed for specific Zillow needs
+- [`wrangle`](https://raw.githubusercontent.com/ray-zapata/project_clustering_zillow/main/wrangle.py): contains functions to prepare data in the manner needed for specific project needs
 - [`model`  ](https://raw.githubusercontent.com/ray-zapata/project_clustering_zillow/main/model.py): contains functions to create, test models and visualize their performance
 
 ### VI. Project Reproduction
