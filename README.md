@@ -46,7 +46,7 @@ This project serves to use clustering and linear regression methodologies to fin
 
 - GitHub repository and [README](#finding-drivers-of-zestimate-errors) stating project overview, goals, findings, and summary
 - Jupyter [Notebook](https://nbviewer.jupyter.org/github/ray-zapata/project_clustering_zillow/blob/main/zestimate_error_report.ipynb) showing high-level view of process through data science pipeline
-    - See the [`exploration.ipynb`](https://nbviewer.jupyter.org/github/ray-zapata/project_clustering_zillow/blob/main/exploration.ipynb) notebook for a more detail view through the exploration process
+    - See the [`exploration.ipynb`](https://nbviewer.jupyter.org/github/ray-zapata/project_clustering_zillow/blob/main/exploration.ipynb) notebook for a more detailed view through the exploration process
     - See the [`modeling.ipynb`](https://nbviewer.jupyter.org/github/ray-zapata/project_clustering_zillow/blob/main/modeling.ipynb) notebook for a more detailed look into the twelve models created
 - Python module(s) to automate the data acquisition and preparation process
 
