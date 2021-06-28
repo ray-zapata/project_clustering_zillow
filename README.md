@@ -25,9 +25,9 @@ IV.  [Process                      ](#iv-process)
 5.   [Modeling & Evaluation        ](#5-modeling--evaluation)
 6.   [Product Delivery             ](#6-product-delivery)
 
-V.   [Modules               ](#v-modules)
+V.   [Modules                      ](#v-modules)
 
-VI.  [Project Reproduction  ](#vi-project-reproduction)
+VI.  [Project Reproduction         ](#vi-project-reproduction)
 
 <br>
 
@@ -40,11 +40,15 @@ VI.  [Project Reproduction  ](#vi-project-reproduction)
 
 #### 1. Description
 
-WIP
+This project serves to use clustering and linear regression methodologies to find drivers for `log_error` in *single-unit properties* sold in 2017 on Zillow.
 
 #### 2. Deliverables
 
-WIP
+- GitHub repository and [README](#finding-drivers-of-zestimate-errors) stating project overview, goals, findings, and summary
+- Jupyter [Notebook](https://nbviewer.jupyter.org/github/ray-zapata/project_clustering_zillow/blob/main/zestimate_error_report.ipynb) showing high-level view of process through data science pipeline
+    - See the [`exploration.ipynb`](https://nbviewer.jupyter.org/github/ray-zapata/project_clustering_zillow/blob/main/exploration.ipynb) notebook for a more detail view through the exploration process
+    - See the [`modeling.ipynb`](https://nbviewer.jupyter.org/github/ray-zapata/project_clustering_zillow/blob/main/modeling.ipynb) notebook for a more detailed look into the twelve models created
+- Python module(s) to automate the data acquisition and preparation process
 
 
 ### II. Project Summary
@@ -52,15 +56,17 @@ WIP
 
 #### 1. Goals
 
-WIP
+The primary focus of the project was to set out and discover potential drivers of the log_error of the Zillow® Zestimate for single-unit properties sold during 2017. In this context, log_error is equal to 𝑙𝑜𝑔(𝑍𝑒𝑠𝑡𝑖𝑚𝑎𝑡𝑒) − 𝑙𝑜𝑔(𝑆𝑎𝑙𝑒𝑃𝑟𝑖𝑐𝑒). After sufficient exploration, these potential drivers would be used as features in predicting the log_error with linear regression algorithms. In attempt to find these drivers, clustering methodologies were used to explore any meaningful groups that are present in the data.
 
 #### 2. Initial Thoughts & Hypothesis
 
-WIP
+It was initially suspected that a significant factor in `log_error` deviating from zero would be due to the under- or over-estimation of property value based on property's physical location. All observations carried through preparation had several methods for location testing, including census precincts and latitudinal & longitudinal geographic coordinates. This would be the initial hypothesis, that property location, when appropriately segmented into geographic of sociological divisions, would have a strong correlation to `log_error`.
 
 #### 3. Findings & Next Phase
 
-WIP
+Using clustering and linear regression machine learning methodologies, it was discovered there may be some potential standing to the initial hypothesis. Several clusters were formed, two of which utilized location-based features, and these clusters would be recommended by feature selection algorithms for model predictions. While not a significant increase, the best performing model on out-of-sample data was carried into final testing on the 20% `test` data set where it just barely edged out the root mean squared error of the baseline created using the mean of `log_error`. Given the shape of the plotted residuals and the abysmally low percentage change in RMSE from model to baseline mean, it is unlikely this produced any insights of value. There is much more work to be done in understanding the question of what is driving the Zestimate errors.
+
+Due to the scope and time frame of this project, it was not attempted to go into a more exhaustive exploration of location features in finding the drivers sought. With additional time and resources, it is desirable to attempt to use either paid or open-source geocoding tools and methodologies in obtaining more precise locations of properties and the neighborhoods, zip codes, and street blocks in which the exist. In future ventures regarding drivers of `logerror`, it would also be desirable to test for finding drivers which are more likely to result in specifically either over or under estimation of property value.
 
 ### III. Data Context
 ---
@@ -78,30 +84,30 @@ Following acquisition and preparation of the initial SQL database, the DataFrame
 | Variable               | Definition                                         | Data Type  |
 |:----------------------:|:--------------------------------------------------:|:----------:|
 | acreage                | conversion of lot_square_feet into acres           | float64    |
-| age                    | age of propery as of 2017                          | int64      |
+| age                    | age of property as of 2017                         | int64      |
 | bathrooms              | count of full- and half-bathrooms                  | float64    |
-| bed_sqft_age_clstr_#   | boolean for five clusterings of bed_sqft_age       | int64      |
+| bed_sqft_age_clstr_#   | boolean for five clusters of bed_sqft_age          | int64      |
 | bedrooms               | count of bedrooms                                  | int64      |
 | bedrooms_per_sqft      | ratio of bedrooms to structure_square_feet         | float64    |
-| census_tractcode       | US census tract codes for property location        | float64    |
+| census_tractcode       | US census tract codes for non-precise location     | float64    |
 | full_bathrooms         | count of only full-bathrooms                       | int64      |
 | la_county              | boolean for if county is within Los Angeles County | int64      |
 | land_value_usd         | value of land in U.S. dollars                      | float64    |
-| lat_long_clstr_#       | boolean for five clusterings of lat_long           | int64      |
+| lat_long_clstr_#       | boolean for five clusters of lat_long              | int64      |
 | latitude               | latitude geographic coordinate of property         | float64    |
 | log_error *            | difference of log(Zestimate) and log(SalePrice)    | float64    |
 | longitude              | longitude geographic coordinate of property        | float64    |
-| lot_rooms_clstr_#      | boolean for five clusterings of lot_rooms          | int64      |
+| lot_rooms_clstr_#      | boolean for five clusters of lot_rooms             | int64      |
 | lot_square_feet        | size of lot(land) in square feet                   | float64    |
 | orange_county          | boolean for if county is within Orange County      | int64      |
-| parcel_id              | unique identier of property                        | int64      |
-| property_id            | unique identier of property                        | int64      |
+| parcel_id              | unique identifier of property                      | int64      |
+| property_id            | unique identifier of property                      | int64      |
 | property_value_usd     | value of property in entirety in U.S. dollars      | float64    |
 | room_count             | count of bedrooms and full- and half-bathrooms     | float64    |
 | structure_square_feet  | dimensions of structure on property in square feet | float64    |
-| structure_value_usd    | value of structure on propert in U.S. dollars      | float64    |
+| structure_value_usd    | value of structure on property in U.S. dollars     | float64    |
 | tax_amount_usd         | most recent tax payment from property owner        | float64    |
-| tract_size_age_clstr_# | boolean for five clusterings of tract_size_age     | int64      |
+| tract_size_age_clstr_# | boolean for five clusters of tract_size_age        | int64      |
 | transaction_date       | most recent date of property sale                  | datetime64 |
 | year_built             | year structure was originally built                | int64      |
 
@@ -113,7 +119,7 @@ Following acquisition and preparation of the initial SQL database, the DataFrame
 #### 1. Project Planning
 🟢 **Plan** ➜ ☐ _Acquire_ ➜ ☐ _Prepare_ ➜ ☐ _Explore_ ➜ ☐ _Model_ ➜ ☐ _Deliver_
 
-- [ ] Build this README containing:
+- [x] Build this README containing:
     - Project overview
     - Initial thoughts and hypotheses
     - Project summary
@@ -163,12 +169,12 @@ Following acquisition and preparation of the initial SQL database, the DataFrame
 
 #### 6. Product Delivery
 ✓ _Plan_ ➜ ✓ _Acquire_ ➜ ✓ _Prepare_ ➜ ✓ _Explore_ ➜ ✓ _Model_ ➜ 🟢 **Deliver**
-- [ ] Prepare Jupyter Notebook of project details through data science pipeline
+- [x] Prepare Jupyter Notebook of project details through data science pipeline
     - Python code clearly commented when necessary
     - Sufficiently utilize markdown
     - Appropriately title notebook and sections
 - [x] With additional time, continue with exploration beyond MVP
-- [ ] Proof read and complete README and project repository
+- [x] Proof read and complete README and project repository
 
 ### V. Modules
 ---
@@ -178,8 +184,8 @@ The created modules used in this project below contain full comments an docstrin
 - [`acquire`](https://raw.githubusercontent.com/ray-zapata/project_clustering_zillow/main/acquire.py): contains functions used in initial data acquisition leading into the prepare phase
 - [`prepare`](https://raw.githubusercontent.com/ray-zapata/project_clustering_zillow/main/prepare.py): contains functions used to prepare data for exploration and visualization
 - [`explore`](https://raw.githubusercontent.com/ray-zapata/project_clustering_zillow/main/explore.py): contains functions to visualize the prepared data and estimate the best drivers of property value
-- [`wrangle`  ](https://raw.githubusercontent.com/ray-zapata/project_clustering_zillow/main/wrangle.py  ): contains functions to prepare data in the manner needed for specific Zillow needs
-- [`model`  ](https://raw.githubusercontent.com/ray-zapata/project_clustering_zillow/main/model.py  ): contains functions to create, test models and visualize their performance
+- [`wrangle`](https://raw.githubusercontent.com/ray-zapata/project_clustering_zillow/main/wrangle.py): contains functions to prepare data in the manner needed for specific Zillow needs
+- [`model`  ](https://raw.githubusercontent.com/ray-zapata/project_clustering_zillow/main/model.py): contains functions to create, test models and visualize their performance
 
 ### VI. Project Reproduction
 ---
