@@ -86,18 +86,18 @@ Following acquisition and preparation of the initial SQL database, the DataFrame
 | acreage                | conversion of lot_square_feet into acres           | float64    |
 | age                    | age of property as of 2017                         | int64      |
 | bathrooms              | count of full- and half-bathrooms                  | float64    |
-| bed_sqft_age_clstr_#   | boolean for five clusters of bed_sqft_age          | int64      |
+| bed_sqft_age_clstr_#   | boolean for five clusters of bed_sqft_age          | uint8      |
 | bedrooms               | count of bedrooms                                  | int64      |
 | bedrooms_per_sqft      | ratio of bedrooms to structure_square_feet         | float64    |
 | census_tractcode       | US census tract codes for non-precise location     | float64    |
 | full_bathrooms         | count of only full-bathrooms                       | int64      |
 | la_county              | boolean for if county is within Los Angeles County | int64      |
 | land_value_usd         | value of land in U.S. dollars                      | float64    |
-| lat_long_clstr_#       | boolean for five clusters of lat_long              | int64      |
+| lat_long_clstr_#       | boolean for five clusters of lat_long              | uint8      |
 | latitude               | latitudinal geographic coordinate of property      | float64    |
 | log_error *            | difference of log(Zestimate) and log(SalePrice)    | float64    |
 | longitude              | longitudinal geographic coordinate of property     | float64    |
-| lot_rooms_clstr_#      | boolean for five clusters of lot_rooms             | int64      |
+| lot_rooms_clstr_#      | boolean for five clusters of lot_rooms             | uint8      |
 | lot_square_feet        | size of lot(land) in square feet                   | float64    |
 | orange_county          | boolean for if county is within Orange County      | int64      |
 | parcel_id              | unique identifier of property                      | int64      |
@@ -107,7 +107,7 @@ Following acquisition and preparation of the initial SQL database, the DataFrame
 | structure_square_feet  | dimensions of structure on property in square feet | float64    |
 | structure_value_usd    | value of structure on property in U.S. dollars     | float64    |
 | tax_amount_usd         | most recent tax payment from property owner        | float64    |
-| tract_size_age_clstr_# | boolean for five clusters of tract_size_age        | int64      |
+| tract_size_age_clstr_# | boolean for five clusters of tract_size_age        | uint8      |
 | transaction_date       | most recent date of property sale                  | datetime64 |
 | year_built             | year structure was originally built                | int64      |
 
